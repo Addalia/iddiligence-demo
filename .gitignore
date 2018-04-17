@@ -1,0 +1,5 @@
+.svn
+node_modules
+npm-debug.log
+app/lib
+dist

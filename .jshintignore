@@ -1,0 +1,2 @@
+./app/scripts/**/templates.js
+./test/e2e/*.conf.js

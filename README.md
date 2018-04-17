@@ -1,11 +1,50 @@
 # iddiligence-demo
+
 Demo Application for testing IDDILIGENCE, our solution for validation of data, documents and identity for digital customers.
 
+## Dependencies
+- Angular.js
+- Angular-Route
+- Angular-Resource
+- Bootstrap
+- Fontawesome
+
+## Usage
+### Install global
+```
+$ npm install -g stylus
+$ npm install -g gulp
+$ npm install -g bower
+$ npm install –g karma
+$ npm install -g protractor
+$ npm install -g karma-coverage
+$ npm install -g karma-junit-reporter
+
+```
+
+### Install local
+```
+$ npm install
+$ bower install
+```
+### Development mode
+```
+$ gulp
+$ gulp build-debug
+```
+### Go-to-production
+```
+$ gulp build
+$ gulp server-dist
+```
+
+### Generate war distribution
+```
+$ gulp target
+```
 ## License
 
 MIT License
-
-Copyright (c) 2018 Addalia Technology, S.L.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,4 +63,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Copyright (c) 2018 Addalia Technology, S.L.
 

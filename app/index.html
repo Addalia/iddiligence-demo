@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es-ES" ng-app="app" ng-cloak>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{'APP_TITLE' | translate}}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Coloca favicon.ico y apple-touch-icon(s) en el directorio raíz -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+  <!-- build:css css/style.min.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="lib/ng-table/dist/ng-table.min.css" />
+  <!-- endbower -->
+  <!--link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" /-->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+
+</head>
+<body >
+    <!--[if lt IE 8]>
+        <p class="browsehappy">
+        Estás usando un navegador <strong>desactualizado</strong>.
+        Por favor <a href="http://browsehappy.com/">actualiza tu navegador</a>
+        Para mejorar la experiencia..
+      </p>
+      <![endif]-->
+      <div ng-controller="MainController as maincontroller">
+        <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-sm-4">
+              <img id="LeftLogo" src="img/300x40LeftLogo.png" class="leftLogo">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-left">
+                  <h3 id="MainTitle" class="text-primary text-center main-title">{{maincontroller.name | translate}}</h3>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <img id="RightLogo" src="img/150x50RightLogo.png" class="rightLogo">
+                </li>
+                <li class="dropdown locale">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="glyphicon spacedglyphicon glyphicon-globe"></div>{{'LANG_SEL_LABEL' | translate}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="maincontroller.changeLocale('en-us')">{{'LOCALE_EN' | translate}}</a></li>
+                    <li><a ng-click="maincontroller.changeLocale('es-es')">{{'LOCALE_ES' | translate}}</a></li>
+                    <li><a ng-click="maincontroller.changeLocale('nl-nl')">{{'LOCALE_NL' | translate}}</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a ng-click="maincontroller.logout()" role="button" ng-hide="maincontroller.getPageStatus().isUserLogged() === false"><div class="glyphicon spacedglyphicon glyphicon-log-out"></div>{{'LOGOUT_LABEL_1' | translate: {name : maincontroller.username} }}</a>
+                  <a ng-click="maincontroller.logout()" role="button" ng-hide="(maincontroller.getPageStatus().isUserLogged() === true) || (maincontroller.actualPage() == 'login') ">{{'USER_LOGIN_LABEL' | translate}}</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+        <div class="col-sm-12">
+          <ng-view></ng-view>
+        </div>
+      </div>
+
+      <!-- build:js js/vendor.min.js -->
+      <!-- bower:js -->
+      <script src="lib/jquery/dist/jquery.js"></script>
+      <script src="lib/angular/angular.js"></script>
+      <script src="lib/angular-mocks/angular-mocks.js"></script>
+      <script src="lib/angular-resource/angular-resource.js"></script>
+      <script src="lib/angular-route/angular-route.js"></script>
+      <script src="lib/angular-translate/angular-translate.js"></script>
+      <!--script src="lib/bootstrap/dist/js/bootstrap.js"></script-->
+      <script src="lib/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+      <script src="lib/ng-table/dist/ng-table.min.js"></script>
+      <script src="lib/ng-file-upload/ng-file-upload.js"></script>
+      <script src="lib/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+      <script src="lib/ngstorage/ngStorage.js"></script>
+      <!-- endbower -->
+      <!-- endbuild -->
+      <!-- build:js js/app.min.js -->
+      <script src="/custom/bootstrap.js"></script>
+      <!-- inject:js -->
+      <script src="/scripts/services/service-view.js"></script>
+      <script src="/scripts/services/service-validation-manager.js"></script>
+      <script src="/scripts/services/service-validation-configuration.js"></script>
+      <script src="/scripts/services/service-user.js"></script>
+      <script src="/scripts/services/service-pvi.js"></script>
+      <script src="/scripts/services/service-patterns.js"></script>
+      <script src="/scripts/services/service-pattern-store.js"></script>
+      <script src="/scripts/services/service-pattern-manager.js"></script>
+      <script src="/scripts/services/service-pattern-attribute-manager.js"></script>
+      <script src="/scripts/services/service-operation.js"></script>
+      <script src="/scripts/services/service-operation-store.js"></script>
+      <script src="/scripts/services/service-operation-manager.js"></script>
+      <script src="/scripts/services/service-media.js"></script>
+      <script src="/scripts/services/service-identity-attribute-manager.js"></script>
+      <script src="/scripts/services/service-fields-manager.js"></script>
+      <script src="/scripts/services/service-document.js"></script>
+      <script src="/scripts/services/service-document-type-translator.js"></script>
+      <script src="/scripts/services/service-document-groups.js"></script>
+      <script src="/scripts/services/service-doc-entry-configuration.js"></script>
+      <script src="/scripts/services/service-core.js"></script>
+      <script src="/scripts/services/product-types.js"></script>
+      <script src="/scripts/utils/utilsFind.js"></script>
+      <script src="/scripts/controllers/UserLogin.controllers.js"></script>
+      <script src="/scripts/controllers/PVIOperationsDemo.controllers.js"></script>
+      <script src="/scripts/controllers/DisplayDemo.controllers.js"></script>
+      <script src="/scripts/controllers/Main.controller.js"></script>
+      <script src="/scripts/controllers/IdentityDemo.controllers.js"></script>
+      <script src="/scripts/controllers/FaceRecognitionDemo.controllers.js"></script>
+      <script src="/scripts/directives/directives.js"></script>
+      <script src="/scripts/directives/validation.directive.js"></script>
+      <script src="/scripts/directives/valeditmodal.directive.js"></script>
+      <script src="/scripts/directives/image.directive.js"></script>
+      <script src="/scripts/directives/docentry.directive.js"></script>
+      <script src="/scripts/templates.js"></script>
+      <script src="/scripts/app.js"></script>
+      <!-- endinject -->
+      <!-- endbuild -->
+      <script type="text/javascript">
+        if (document.getElementsByTagName('base').length == 0 ) {
+          angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + ' target="_self" />'));
+        };
+
+      </script>
+
+    </body>
+    </html>

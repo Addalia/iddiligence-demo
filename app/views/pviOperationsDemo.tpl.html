@@ -1,0 +1,140 @@
+<div class="">
+    <validation-edit-modal
+        show='pviOperationsDemoCtrl.pvimodal'
+        errcallback='pviOperationsDemoCtrl.errorCallBack'
+        succcallback='pviOperationsDemoCtrl.sendToPVI'
+        enableCondition='pviOperationsDemoCtrl.checkPVIReady'>
+    </validation-edit-modal>
+<div>
+<div class="">
+    <ipsa-modal
+        show='pviOperationsDemoCtrl.modal'
+        savechanges="pviOperationsDemoCtrl.modalOk()"
+        template-user="views/modal.tpl.html"
+        msg="{{pviOperationsDemoCtrl.modalmsg}}"
+        custom="{{pviOperationsDemoCtrl.customModal}}"
+        title="WARNING_TITLE"
+        type='{{pviOperationsDemoCtrl.modaltype}}'
+        cancelable='false'>
+    </ipsa-modal>
+<div>
+
+<div class="">
+    <div class="col-sm-8" >
+        <div class="col-md-6 col-sm-12">
+
+            <div class="panel panel-default col-sm-10 col-sm-offset-1">
+                <ipsa-doc-entry
+                    title = "IDENTITY_LEGEND"
+                    model = "pviOperationsDemoCtrl.identityConfiguration"
+                    disable = "pviOperationsDemoCtrl.disableIdentityDocEntry"
+                    selected = "pviOperationsDemoCtrl.selectedIdentity"
+                    itemclick = "pviOperationsDemoCtrl.onIdentityClick(document)"
+                    onupload = "pviOperationsDemoCtrl.uploadIdentityImage($dataURI)"
+                    onimagereset = "pviOperationsDemoCtrl.onResetIdentityImage()"
+                    disableimage = "pviOperationsDemoCtrl.disableIdentityImage"
+                    disabledropdown = "false"
+                    image = "pviOperationsDemoCtrl.image.Identity"
+                    clearimage = "pviOperationsDemoCtrl.clearIdentityImage"
+                    inputstyle = "compact"
+                    clear = "pviOperationsDemoCtrl.clearIdentityDocEntry"
+                    cssimage ="identity-img">
+                </ipsa-doc-entry>
+            </div>
+
+            <div class="panel panel-default col-sm-12">
+                <ipsa-doc-entry
+                    title = "RECEIPT_LEGEND"
+                    model = "pviOperationsDemoCtrl.receiptConfiguration"
+                    disable = "pviOperationsDemoCtrl.disableReceiptDocEntry"
+                    selected = "pviOperationsDemoCtrl.selectedReceipt"
+                    itemclick = "pviOperationsDemoCtrl.onReceiptClick(document)"
+                    onupload = "pviOperationsDemoCtrl.uploadReceiptImage($dataURI)"
+                    onimagereset = "pviOperationsDemoCtrl.onResetReceiptImage()"
+                    disableimage = "pviOperationsDemoCtrl.isReceiptImageDisabled()"
+                    disabledropdown = "false"
+                    image = "pviOperationsDemoCtrl.image.Receipt"
+                    clearimage = "pviOperationsDemoCtrl.clearReceiptImage"
+                    inputstyle = "compact"
+                    clear = "pviOperationsDemoCtrl.clearReceiptDocEntry"
+                    cssimage ="receipt-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default col-sm-12">
+                <ipsa-doc-entry
+                    title = "INCOME_LEGEND"
+                    model = "pviOperationsDemoCtrl.incomeConfiguration"
+                    disable = "pviOperationsDemoCtrl.disableIncomeDocEntry"
+                    selected = "pviOperationsDemoCtrl.selectedIncome"
+                    itemclick = "pviOperationsDemoCtrl.onIncomeClick(document)"
+                    onupload = "pviOperationsDemoCtrl.uploadIncomeImage($dataURI)"
+                    onimagereset = "pviOperationsDemoCtrl.onResetIncomeImage()"
+                    disableimage = "pviOperationsDemoCtrl.isIncomeImageDisabled()"
+                    disabledropdown = "false"
+                    image = "pviOperationsDemoCtrl.image.Income"
+                    clearimage = "pviOperationsDemoCtrl.clearIncomeImage"
+                    inputstyle = "compact"
+                    clear = "pviOperationsDemoCtrl.clearIncomeDocEntry"
+                    cssimage ="income-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4" >
+        <div class="row form-group">
+            <button style="margin-right: 1em;" type="button" id="sendPVI_btn" class="btn btn-primary pull-right" ng-click="pviOperationsDemoCtrl.sendPVI();" ng-disabled="pviOperationsDemoCtrl.isSendPVIButtonDisabled()">
+                    <div class="glyphicon glyphicon glyphicon-export"></div>
+                    {{'SENDPVI_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="terminate_btn" class="btn btn-success pull-right" ng-click="pviOperationsDemoCtrl.terminate();"  ng-disabled="pviOperationsDemoCtrl.isTerminateButtonDisabled()">
+                    <div class="glyphicon glyphicon-cloud-upload"></div>
+                    {{'FINISH_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="cancel_btn" class="btn btn-danger pull-right" ng-click="pviOperationsDemoCtrl.cancel();" ng-disabled="pviOperationsDemoCtrl.isCancelButtonDisabled()">
+                    <div class="glyphicon glyphicon-trash"></div>
+                    {{'CANCEL_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="newOp_btn" class="btn btn-primary pull-right" ng-click="pviOperationsDemoCtrl.newOperation();">
+                    <div class="glyphicon glyphicon-file"></div>
+                    {{'NEW_LABEL' | translate}}
+            </button>
+        </div>
+
+        <div class="row">
+            <div idoc-validation
+                title="IDENTITY_LEGEND"
+                titletype="pviOperationsDemoCtrl.validationIdentity.title"
+                status="pviOperationsDemoCtrl.identityValidation[pviOperationsDemoCtrl.selectedIdentity.doctype].status"
+                ocr="pviOperationsDemoCtrl.ocr.Identity"
+                headers="pviOperationsDemoCtrl.identityValidation[pviOperationsDemoCtrl.selectedIdentity.doctype].headers"
+                docattribs="pviOperationsDemoCtrl.identityValidation[pviOperationsDemoCtrl.selectedIdentity.doctype].attribs"
+                validations="pviOperationsDemoCtrl.identityValidation[pviOperationsDemoCtrl.selectedIdentity.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="RECEIPT_LEGEND"
+                titletype="pviOperationsDemoCtrl.validationReceipt.title"
+                status="pviOperationsDemoCtrl.receiptValidation[pviOperationsDemoCtrl.selectedReceipt.doctype].status"
+                ocr="pviOperationsDemoCtrl.ocr.Receipt"
+                headers="pviOperationsDemoCtrl.receiptValidation[pviOperationsDemoCtrl.selectedReceipt.doctype].headers"
+                docattribs="pviOperationsDemoCtrl.receiptValidation[pviOperationsDemoCtrl.selectedReceipt.doctype].attribs"
+                validations="pviOperationsDemoCtrl.receiptValidation[pviOperationsDemoCtrl.selectedReceipt.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="INCOME_LEGEND"
+                titletype="pviOperationsDemoCtrl.validationIncome.title"
+                status="pviOperationsDemoCtrl.incomeValidation[pviOperationsDemoCtrl.selectedIncome.doctype].status"
+                ocr="pviOperationsDemoCtrl.ocr.Income"
+                headers="pviOperationsDemoCtrl.incomeValidation[pviOperationsDemoCtrl.selectedIncome.doctype].headers"
+                docattribs="pviOperationsDemoCtrl.incomeValidation[pviOperationsDemoCtrl.selectedIncome.doctype].attribs"
+                validations="pviOperationsDemoCtrl.incomeValidation[pviOperationsDemoCtrl.selectedIncome.doctype].validations">
+            </div>
+        </div>
+    </div>
+</div>

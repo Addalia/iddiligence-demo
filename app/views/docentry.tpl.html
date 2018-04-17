@@ -1,0 +1,80 @@
+<div ng-attr-id="{{ 'ipsa-docentry-' + title }}">
+	<div>
+        <div class="panel-heading nav navbar-default row docentry-title">
+            <div>
+                <div class="pull-left">
+                    <h3 class="panel-title panel-h-title vertical-center" ng-class="{true: 'disabled-title', false: ''}[isDisabled]">
+                        <a class="not-underlined">{{title | translate}}</a>
+                    </h3>
+                </div>
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="{{'#navbar-collapse-' + title}}" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+
+                <div id="{{'navbar-collapse-' + title}}" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-class="{true: 'not-allowed', false: ''}[isDisabled == true]" role="button" aria-haspopup="true" aria-expanded="false"><div class="glyphicon spacedglyphicon "></div>{{selected.title | translate}}&nbsp<span class="caret"></span></a>
+
+                            <ul class="dropdown-menu" ng-model="model" ng-show="!isDisabled && !isDropdownDisabled">
+                                <li><a ng-repeat="document in model" value="{{document.title}}" ng-click="itemclick({document})">
+                                {{document.title | translate}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+		<form name="inputform">
+            <div class="panel-body panel-body-docentry row" >
+                <div class="drop-box-container {{cssimage}}" ng-class="{true: 'not-allowed', false: ''}[isDisabled == true || inputform.$invalid]">
+                    <ipsa-image
+                        title = {{title}}
+						disable = "disableimagedocentry(inputform.$invalid)"
+                        onupload = "onuploaddocentry($dataURI)"
+						image = "imagedocentry()"
+						clear = "clearimage"
+            pattern = {{pattern}}>
+                    </ipsa-image>
+                </div>
+			</div>
+
+			<div ng-if="inputstyle==='compact'" >
+				<div class="panel-body panel-body-docentry row">
+			        <div class="" ng-repeat='field in selected.fields'>
+			            <div class="input docentry" ng-show="field.show==='true'">
+			                <label  class="col-sm-4 control-label text-justify text-nowrap text-sm-right" style="padding-top: 0.5em;">{{field.label | translate}}</label>
+			                <div class="col-sm-8">
+                                <input ng-if="(!supportedDate) && field.controltype === 'date'" type="text" class="form-control col-sm-4" id={{field.id}} ng-model="field.value" ng-required={{field.required}} ng-disabled="isDisabled" ng-pattern="/^(\d{1,2})/(\d{1,2})/(\d{4})$/" placeholder="{{'DATE_HOLDER_LABEL' | translate}}"/>
+								<input  ng-if="supportedDate || field.controltype !== 'date'" type={{field.controltype}} class="form-control col-sm-4" id={{field.id}} ng-model="field.value" ng-required={{field.required}} ng-disabled="isDisabled" />
+			                </div>
+			            </div>
+			        </div>
+				</div>
+        	</div>
+
+			<div ng-if="inputstyle==='default'" >
+                <div class="panel-body panel-body-docentry row" style="padding-top: 1px;">
+					<div class="" ng-repeat='field in selected.fields'>
+						<div class="input docentry" ng-show="field.show=='true'">
+                    		<label class="control-label text-justify text-nowrap text-sm-right">{{field.label | translate}}</label>
+                    		<input ng-if="(!supportedDate) && field.controltype === 'date'" type="text" class="form-control" id={{field.id}} ng-model="field.value" ng-required={{field.required}} ng-disabled="isDisabled" ng-pattern="/\d\d/\d\d/\d\d\d\d/" placeholder="{{'DATE_HOLDER_LABEL' | translate}}"/>
+                            <input ng-if="supportedDate || field.controltype !== 'date'" type={{field.controltype}} class="form-control" id={{field.id}} ng-model="field.value" ng-required={{field.required}} ng-disabled="isDisabled" />
+                		</div>
+                    </div>
+                </div>
+            </div>
+
+    	</form>
+    </div>
+</div>

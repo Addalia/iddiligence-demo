@@ -1,0 +1,39 @@
+<div class="panel" style="margin-bottom: 0.75em;" ng-class="{'panel-info':(status=='dis'), 'panel-success':(status=='ok'), 'panel-danger':(status=='ko'),
+'panel-warning':(status=='pending')}">
+    <div id="{{'panel-title-' + title}}" data-toggle="collapse" data-target="#{{ 'panel-' + title }}" class="panel-heading panel-h-title" style="display:flex;"><h3 class="glyphicon" style="margin-top: -0.15em; margin-bottom: -0.5em; padding-right:0.5em; " ng-class="{'glyphicon-plus text-muted':(status=='dis'), 'glyphicon-ok text-success':(status=='ok'), 'glyphicon-remove text-danger':(status=='ko'),'glyphicon-refresh text-warning':(status=='pending')}"></h3>{{title | translate}} {{titletype | translate}}</div>
+    <div ng-attr-id="{{ 'panel-' + title }}" class="panel-body collapse in">
+        <label class=""  ng-if="ocr=='ok'" for="name"><div class="glyphicon glyphicon-ok text-success" ></div> {{'DOCUMENT_RECEIVED_LABEL' | translate}}</label>
+        <label class=""  ng-if="ocr=='ko'" for="name"><div class="glyphicon glyphicon-remove text-danger" ></div> {{'DOCUMENT_RECEIVED_WRONG_LABEL' | translate}}</label>
+        <label class=""  ng-if="ocr=='dis'" for="name"><div class="glyphicon glyphicon-hourglass text-muted" ></div> {{'DOCUMENT_WAITING_LABEL' | translate}}</label>
+        <label class=""  ng-if="ocr=='pending'" for="name"><div class="glyphicon glyphicon-refresh text-warning" ></div> {{'DOCUMENT_PROCESSING_LABEL' | translate}}</label>
+
+        <div ng-if="hasChecks" ng-repeat='header in headers track by $index'>
+            <label class="col-sm-{{colHeaders[$index]}} col-xs-{{colHeaders[$index]}} control-label text-right text-sm-right check-header" style="padding-top: 0.5em;" >{{header | translate}}</label>
+        </div>
+
+        <div ng-repeat='(key, value) in docattribs'>
+            <div class="row">
+                <div class="input validation">
+                    <label class="col-sm-{{colSize[0]}} col-xs-{{colSize[0]}} control-label text-justify text-nowrap text-sm-right" style="padding-top: 0.5em;">{{key | translate}}</label>
+                    <div class="col-sm-{{colSize[1]}} col-xs-{{colSize[1]}}">
+                        <input type="text" class="form-control" id="{{key}}" value="{{value.value}}" disabled/>
+                    </div>
+                </div>
+
+                <div ng-if="hasChecks" ng-repeat='check in value.checks track by $index'>
+                    <div class="col-sm-{{colSize[2]}} col-xs-{{colSize[2]}}">
+                        <span class="glyphicon checklist" ng-class="{'check-two':($index>0), 'glyphicon-ok text-success':(check=='ok'), 'glyphicon-remove text-danger':(check=='ko'), 'glyphicon-hourglass text-muted':(check=='dis'),
+                        'glyphicon-refresh text-muted':(check=='pending'), 'text-muted':(check==''), 'glyphicon-unchecked text-muted':(check=='unchecked')}" style="padding-top: 0.5em;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="hasValidations && hasAttribs"><br/></div>
+        <div ng-repeat='(key, value) in validations'>
+            <div class="row col-sm-6">
+                <label ng-class="{true: '', false: 'col-sm-offset-1'}[hasAttribs]" ><div class="glyphicon validation" ng-class="{'glyphicon-ok text-success':(value=='ok'), 'glyphicon-remove text-danger':(value=='ko'), 'glyphicon-hourglass text-muted':(value=='dis'), 'glyphicon-refresh text-muted':(value=='pending')}" ></div> {{key | translate}}</label>
+            </div>
+        </div>
+    </div>
+</div>

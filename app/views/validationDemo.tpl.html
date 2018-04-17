@@ -1,0 +1,124 @@
+<div class="">
+    <ipsa-modal
+        show='validationDemoCtrl.modal'
+        savechanges="validationDemoCtrl.modalOk()"
+        template-user="views/modal.tpl.html"
+        msg="{{validationDemoCtrl.error}}"
+        title="WARNING_TITLE"
+        type='W'
+        cancelable='false'>
+    </ipsa-modal>
+<div>
+
+<div class="">
+    <div class="col-sm-8" >
+        <div class="col-md-6 col-sm-12">
+
+            <div class="panel panel-default col-sm-10 col-sm-offset-1">
+                <ipsa-doc-entry
+                    title = "IDENTITY_LEGEND"
+                    model = "validationDemoCtrl.identityConfiguration"
+                    disable = "validationDemoCtrl.disableIdentityDocEntry"
+                    selected = "validationDemoCtrl.selectedIdentity"
+                    itemclick = "validationDemoCtrl.onIdentityClick(document)"
+                    onupload = "validationDemoCtrl.uploadIdentityImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetIdentityImage()"
+                    disableimage = "validationDemoCtrl.disableIdentityImage"
+                    disabledropdown = "false"
+                    image = "validationDemoCtrl.image.Identity"
+                    clearimage = "validationDemoCtrl.clearIdentityImage"
+                    inputstyle = "default"
+                    clear = "validationDemoCtrl.clearIdentityDocEntry"
+                    cssimage ="identity-img">
+                </ipsa-doc-entry>
+            </div>
+
+            <div class="panel panel-default col-sm-12">
+                <ipsa-doc-entry
+                    title = "RECEIPT_LEGEND"
+                    model = "validationDemoCtrl.receiptConfiguration"
+                    disable = "validationDemoCtrl.disableReceiptDocEntry"
+                    selected = "validationDemoCtrl.selectedReceipt"
+                    itemclick = "validationDemoCtrl.onReceiptClick(document)"
+                    onupload = "validationDemoCtrl.uploadReceiptImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetReceiptImage()"
+                    disableimage = "validationDemoCtrl.isReceiptImageDisabled()"
+                    disabledropdown = "false"
+                    image = "validationDemoCtrl.image.Receipt"
+                    clearimage = "validationDemoCtrl.clearReceiptImage"
+                    inputstyle = "compact"
+                    clear = "validationDemoCtrl.clearReceiptDocEntry"
+                    cssimage ="receipt-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default col-sm-12">
+                <ipsa-doc-entry
+                    title = "INCOME_LEGEND"
+                    model = "validationDemoCtrl.incomeConfiguration"
+                    disable = "validationDemoCtrl.disableIncomeDocEntry"
+                    selected = "validationDemoCtrl.selectedIncome"
+                    itemclick = "validationDemoCtrl.onIncomeClick(document)"
+                    onupload = "validationDemoCtrl.uploadIncomeImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetIncomeImage()"
+                    disableimage = "validationDemoCtrl.isIncomeImageDisabled()"
+                    disabledropdown = "false"
+                    image = "validationDemoCtrl.image.Income"
+                    clearimage = "validationDemoCtrl.clearIncomeImage"
+                    inputstyle = "compact"
+                    clear = "validationDemoCtrl.clearIncomeDocEntry"
+                    cssimage ="income-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4" >
+        <div class="row form-group">
+            <button style="margin-right: 1em;" type="button" id="terminate_btn" class="btn btn-success pull-right" ng-click="validationDemoCtrl.terminate();"  ng-disabled="validationDemoCtrl.isTerminateButtonDisabled()">
+                    <div class="glyphicon glyphicon-cloud-upload"></div> {{'FINISH_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="cancel_btn" class="btn btn-danger pull-right" ng-click="validationDemoCtrl.cancel();" ng-disabled="validationDemoCtrl.isCancelButtonDisabled()"><div class="glyphicon glyphicon-trash">
+                    </div> {{'CANCEL_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="newOp_btn" class="btn btn-primary pull-right" ng-click="validationDemoCtrl.newOperation();"><div class="glyphicon glyphicon-file">
+                    </div> {{'NEW_LABEL' | translate}}
+            </button>
+        </div>
+
+        <div class="row">
+            <div idoc-validation
+                title="IDENTITY_LEGEND"
+                titletype="validationDemoCtrl.validationIdentity.title"
+                status="validationDemoCtrl.identityValidation[validationDemoCtrl.selectedIdentity.doctype].status"
+                ocr="validationDemoCtrl.ocr.Identity"
+                headers="validationDemoCtrl.identityValidation[validationDemoCtrl.selectedIdentity.doctype].headers"
+                docattribs="validationDemoCtrl.identityValidation[validationDemoCtrl.selectedIdentity.doctype].attribs"
+                validations="validationDemoCtrl.identityValidation[validationDemoCtrl.selectedIdentity.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="RECEIPT_LEGEND"
+                titletype="validationDemoCtrl.validationReceipt.title"
+                status="validationDemoCtrl.receiptValidation[validationDemoCtrl.selectedReceipt.doctype].status"
+                ocr="validationDemoCtrl.ocr.Receipt"
+                headers="validationDemoCtrl.receiptValidation[validationDemoCtrl.selectedReceipt.doctype].headers"
+                docattribs="validationDemoCtrl.receiptValidation[validationDemoCtrl.selectedReceipt.doctype].attribs"
+                validations="validationDemoCtrl.receiptValidation[validationDemoCtrl.selectedReceipt.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="INCOME_LEGEND"
+                titletype="validationDemoCtrl.validationIncome.title"
+                status="validationDemoCtrl.incomeValidation[validationDemoCtrl.selectedIncome.doctype].status"
+                ocr="validationDemoCtrl.ocr.Income"
+                headers="validationDemoCtrl.incomeValidation[validationDemoCtrl.selectedIncome.doctype].headers"
+                docattribs="validationDemoCtrl.incomeValidation[validationDemoCtrl.selectedIncome.doctype].attribs"
+                validations="validationDemoCtrl.incomeValidation[validationDemoCtrl.selectedIncome.doctype].validations">
+            </div>
+        </div>
+    </div>
+</div>

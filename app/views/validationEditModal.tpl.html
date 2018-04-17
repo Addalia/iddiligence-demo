@@ -1,0 +1,41 @@
+<div ng-if="show" class="wrapper overlay vertical-align">
+  <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 h-75 p-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{'VAL_EDIT_TITLE' | translate}}</div>
+      <div class="panel-body pre-scrollable" style="max-height:80%; max-height:80vh;">
+        <div>
+          <div id="pvimodal_operation_status" class="panel panel-primary" ng-class="{'panel-success':(operation.documentStatus==='OK'), 'panel-warning':(operation.documentStatus!=='OK')}">
+            <div data-toggle="collapse" data-target="#{{'op-' + operation.idDocument}}" class="panel-heading panel-h-title">{{ 'OPERATION' | translate}} {{operation.documentStatus}}</div>
+            <span  id="{{'op-' + operation.idDocument}}" class="collapse in">
+              <table ng-if="operation.validations.length>0"  class="panel-body table table-condensed" style="display: inline-block;">
+                <tr ng-repeat="(valkey, val) in operation.validations">
+                  <th width="100%"" >{{val.description | translate}}</th><th ><div class="glyphicon" ng-class="{'glyphicon-ok text-success':(val.status=='OK'), 'glyphicon-remove text-danger':(val.status=='KO')}" ng-click="toggleValidation(val)" style="cursor:pointer;"></div></th>
+                </tr>
+              </table>
+            </span>
+          </div>
+          <div ng-repeat="(dockey, doc) in operation.documents" class="panel panel-primary" ng-class="{'panel-success':(doc.documentStatus==='OK'), 'panel-warning':(doc.documentStatus==='KO')}">
+            <div data-toggle="collapse" data-target="#{{'val-' + doc.idDocument}}" class="panel-heading panel-h-title" >{{doc.documentType | translate}} {{doc.documentStatus}}</div>
+            <span  id="{{'val-' + doc.idDocument}}" class="collapse in">
+              <table class="panel-body table table-condensed" style="display: inline-block;">
+                <tr ng-repeat="(valkey, val) in doc.validations">
+                  <!--class="col-10"-->
+                  <th width="100%"" >{{val.description | translate}}</th><th ><div id="{{'val-' + val.description}}" class="glyphicon" ng-class="{'glyphicon-ok text-success':(val.status=='OK'), 'glyphicon-remove text-danger':(val.status=='KO')}" ng-click="toggleValidation(val)" style="cursor:pointer;"></div></th>
+                </tr>
+              </table>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div ng-if="loading" style="float: none;margin: 0 auto;">
+          <img src="img/loading.gif" alt="loading" class="load-img">
+        </div>
+        <div ng-if="!loading" style="float: none;margin: 0 auto;">
+          <button id="pvi_modal_ok" class="btn btn-primary" ng-click="save()"><a class="glyphicon spacedglyphicon glyphicon-ok" style="color:white"></a> {{'ACCEPT_BUTTON_LABEL' | translate}}</button>
+          <button id="pvi_modal_cancel" class="btn btn-primary" ng-click="cancel()"><a class="glyphicon spacedglyphicon glyphicon-remove" style="color:white"></a> {{'CANCEL_BUTTON_LABEL' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

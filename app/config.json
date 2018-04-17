@@ -1,0 +1,672 @@
+{
+  "restUrl": "http://localhost:8080/IDocValidationService/resources",
+  "products": [
+    { "path":"/validationDemo", "name":"SOLICITUDE_INSURANCE"},
+    { "path":"/validationDemo", "name":"SOLICITUDE_CREDIT"},
+    { "path":"/validationDemo", "name":"REGISTER_LINE"},
+    { "path":"/validationDemo", "name":"RETAIL"},
+    { "path":"/identityDemo", "name":"IDENTITY_DEMO"},
+    { "path":"/faceRecognitionDemo", "name":"FACE_RECOGNITION_DEMO"},
+    { "path":"/pviOperationsDemo", "name":"PVI_OPERATIONS_DEMO"}
+  ],
+  "locales":[
+    {"name":"LOCALE_EN","locale":"en-us"},
+    {"name":"LOCALE_ES","locale":"es-es"},
+    {"name":"LOCALE_NL","locale":"nl-nl"}
+  ],
+  "documentGroups" : {
+    "Not_Recognized_Identity" : "Identity",
+    "Dni":"Identity",
+    "NIE":"Identity",
+    "Passport":"Identity",
+    "Not_Recognized_IdentityFront" : "IdentityFront",
+    "Dni_front":"IdentityFront",
+    "Nie_front":"IdentityFront",
+    "Not_Recognized_Income" : "Income",
+    "Paysheet":"Income",
+    "IRPF":"Income",
+    "Not_Recognized_Receipt" : "Receipt",
+    "Bank_Receipt":"Receipt",
+    "Receipt":"Receipt",
+    "Not_Recognized_SignatureCard" : "SignatureCard",
+    "SignatureCard": "SignatureCard",
+    "Not_Recognized" : "Not_Recognized",
+    "Pattern":"Pattern",
+    "Media":"Pattern",
+    "IdentityMedia":"IdentityMedia"
+  },
+  "autoTypes" :[
+    "Not_Recognized_Identity",
+    "Not_Recognized_IdentityFront",
+    "Not_Recognized_Income",
+    "Not_Recognized_Receipt",
+    "Not_Recognized_SignatureCard"
+  ],
+  "documentTypeTranslation" : {
+    "Not_Recognized_Identity":"Not_Recognized",
+    "Not_Recognized_IdentityFront":"Not_Recognized",
+    "Not_Recognized_Income":"Not_Recognized",
+    "Not_Recognized_Receipt":"Not_Recognized",
+    "Not_Recognized_SignatureCard":"Not_Recognized"
+  },
+  "docEntryConfiguration" : {
+    "Not_Recognized_Identity":{
+        "DemoApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Identity",
+          "fields": [
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIdentity", "defaultvalue": "Dni"}
+          ]
+        },
+        "PVIApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Identity",
+          "fields": [
+              {"label": "TELEPHONE_NUMBER_LABEL", "attrname": "telephone", "controltype": "number", "required": "true", "show": "true", "id": "telephonenumber"},
+              {"label": "AUTHORIZATION_LABEL", "attrname": "operation_user_authorization", "controltype": "checkbox", "required": "false", "show": "true", "id": "authorization"},
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIdentity", "defaultvalue": "Dni"}
+          ]
+        },
+        "IdentityApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Identity",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "number", "controltype": "text", "required": "true", "show": "true", "id": "identitynumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "first_name", "controltype": "text", "required": "true", "show": "true", "id": "identityfirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "last_name", "controltype": "text", "required": "true", "show": "true", "id": "identitylastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "birthdate", "controltype": "date", "required": "true", "show": "true", "id": "identitybirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "identityexpirationdate"},
+            {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIdentity", "defaultvalue": "Dni"}
+          ]
+        }
+    },
+    "Not_Recognized_IdentityFront":{
+        "DemoApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_IdentityFront",
+          "fields": []
+        },
+        "PVIApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_IdentityFront",
+          "fields": []
+        },
+        "IdentityApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_IdentityFront",
+          "fields": [
+            {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIdentity", "defaultvalue": "Dni_front"}
+          ]
+        }
+    },
+    "Not_Recognized_Income":{
+        "DemoApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Income",
+          "fields": [
+              {"label": "AMOUNT_LABEL", "attrname": "amount", "controltype": "text", "required": "true", "show": "true", "id": "amount"},
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIncome", "defaultvalue": "Paysheet"}
+          ]
+        },
+        "PVIApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Income",
+          "fields": [
+              {"label": "AMOUNT_LABEL", "attrname": "amount", "controltype": "text", "required": "true", "show": "true", "id": "amount"},
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeIncome", "defaultvalue": "Paysheet"}
+          ]
+        },
+        "IdentityApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Income",
+          "fields": []
+        }
+    },
+    "Not_Recognized_Receipt":{
+        "DemoApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Receipt",
+          "fields": [
+              {"label": "ACCOUNT_LABEL", "attrname": "account_number", "controltype": "text", "required": "false", "show": "true", "id": "account_number"},
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeReceipt", "defaultvalue": "Bank_Receipt"}
+          ]
+        },
+        "PVIApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Receipt",
+          "fields": [
+              {"label": "ACCOUNT_LABEL", "attrname": "account_number", "controltype": "text", "required": "false", "show": "true", "id": "account_number"},
+              {"label": "OcrTestDesiredDocType", "attrname": "OcrTestDesiredDocType", "controltype": "text", "required": "false", "show": "false", "id": "OcrTestDesiredDocTypeReceipt", "defaultvalue": "Bank_Receipt"}
+          ]
+        },
+        "IdentityApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_Receipt",
+          "fields": []
+        }
+    },
+    "Not_Recognized_SignatureCard":{
+        "DemoApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_SignatureCard",
+          "fields": []
+        },
+        "PVIApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_SignatureCard",
+          "fields": []
+        },
+        "IdentityApp": {
+          "title": "DOC_AUTO_LABEL",
+          "doctype": "Not_Recognized_SignatureCard",
+          "fields": []
+        }
+    },
+    "Dni" : {
+        "DemoApp": {
+          "title": "DNI_LABEL",
+          "doctype": "Dni",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "dni_number", "controltype": "text", "required": "false", "show": "false", "id": "dninumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "dni_first_name", "controltype": "text", "required": "false", "show": "false", "id": "dnifirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "dni_last_name", "controltype": "text", "required": "false", "show": "false", "id": "dnilastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "dni_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "dnibirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "dni_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "dniexpirationdate"}
+          ]
+        },
+        "PVIApp": {
+          "title": "DNI_LABEL",
+          "doctype": "Dni",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "dni_number", "controltype": "text", "required": "false", "show": "false", "id": "dninumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "dni_first_name", "controltype": "text", "required": "false", "show": "false", "id": "dnifirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "dni_last_name", "controltype": "text", "required": "false", "show": "false", "id": "dnilastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "dni_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "dnibirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "dni_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "dniexpirationdate"},
+            {"label": "TELEPHONE_NUMBER_LABEL", "attrname": "dni_telephone", "controltype": "number", "required": "true", "show": "true", "id": "dnitelephonenumber"},
+            {"label": "AUTHORIZATION_LABEL", "attrname": "operation_user_authorization", "controltype": "checkbox", "required": "false", "show": "true", "id": "authorization"}
+          ]
+        },
+        "IdentityApp": {
+          "title": "DNI_LABEL",
+          "doctype": "Dni",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "dni_number", "controltype": "text", "required": "true", "show": "true", "id": "dninumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "dni_first_name", "controltype": "text", "required": "true", "show": "true", "id": "dnifirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "dni_last_name", "controltype": "text", "required": "true", "show": "true", "id": "dnilastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "dni_birthdate", "controltype": "date", "required": "true", "show": "true", "id": "dnibirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "dni_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "dniexpirationdate"}
+          ]
+        }
+    },
+    "Dni_front" : {
+        "IdentityApp": {
+          "title": "DNI_FRONT_LABEL",
+          "doctype": "Dni_front",
+          "fields": []
+      }
+    },
+    "NIE" : {
+        "DemoApp" : {
+          "title": "NIE_LABEL",
+          "doctype": "NIE",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "nie_number", "controltype": "text", "required": "false", "show": "false", "id": "nienumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "nie_first_name", "controltype": "text", "required": "false", "show": "false", "id": "niefirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "nie_last_name", "controltype": "text", "required": "false", "show": "false", "id": "nielastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "nie_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "niebirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "nie_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "nieexpirationdate"}
+          ]
+        },
+        "PVIApp" : {
+          "title": "NIE_LABEL",
+          "doctype": "NIE",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "nie_number", "controltype": "text", "required": "false", "show": "false", "id": "nienumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "nie_first_name", "controltype": "text", "required": "false", "show": "false", "id": "niefirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "nie_last_name", "controltype": "text", "required": "false", "show": "false", "id": "nielastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "nie_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "niebirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "nie_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "nieexpirationdate"},
+            {"label": "TELEPHONE_NUMBER_LABEL", "attrname": "nie_telephone", "controltype": "number", "required": "true", "show": "true", "id": "nietelephonenumber"},
+            {"label": "AUTHORIZATION_LABEL", "attrname": "operation_user_authorization", "controltype": "checkbox", "required": "false", "show": "true", "id": "authorization"}
+          ]
+        },
+        "IdentityApp" : {
+          "title": "NIE_LABEL",
+          "doctype": "NIE",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "nie_number", "controltype": "text", "required": "true", "show": "true", "id": "nienumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "nie_first_name", "controltype": "text", "required": "true", "show": "true", "id": "niefirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "nie_last_name", "controltype": "text", "required": "true", "show": "true", "id": "nielastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "nie_birthdate", "controltype": "date", "required": "true", "show": "true", "id": "niebirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "nie_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "nieexpirationdate"}
+          ]
+        }
+    },
+    "Nie_front" : {
+        "IdentityApp": {
+          "title": "NIE_FRONT_LABEL",
+          "doctype": "Nie_front",
+          "fields": []
+        }
+    },
+    "Passport" : {
+        "DemoApp" : {
+          "title": "PASSPORT_LABEL",
+          "doctype": "Passport",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "passport_number", "controltype": "text", "required": "false", "show": "false", "id": "passportnumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "passport_first_name", "controltype": "text", "required": "false", "show": "false", "id": "passportfirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "passport_last_name", "controltype": "text", "required": "false", "show": "false", "id": "passportlastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "passport_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "passportbirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "passport_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "passportexpirationdate"}
+          ]
+        },
+        "PVIApp" : {
+          "title": "PASSPORT_LABEL",
+          "doctype": "Passport",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "passport_number", "controltype": "text", "required": "false", "show": "false", "id": "passportnumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "passport_first_name", "controltype": "text", "required": "false", "show": "false", "id": "passportfirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "passport_last_name", "controltype": "text", "required": "false", "show": "false", "id": "passportlastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "passport_birthdate", "controltype": "date", "required": "false", "show": "false", "id": "passportbirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "passport_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "passportexpirationdate"},
+            {"label": "TELEPHONE_NUMBER_LABEL", "attrname": "passport_telephone", "controltype": "number", "required": "true", "show": "true", "id": "passporttelephonenumber"},
+            {"label": "AUTHORIZATION_LABEL", "attrname": "operation_user_authorization", "controltype": "checkbox", "required": "false", "show": "true", "id": "authorization"}
+          ]
+        },
+        "IdentityApp" : {
+          "title": "PASSPORT_LABEL",
+          "doctype": "Passport",
+          "fields": [
+            {"label": "IDENTIFICATION_NUMBER_LABEL", "attrname": "passport_number", "controltype": "text", "required": "true", "show": "true", "id": "passportnumber"},
+            {"label": "FIRST_NAME_LABEL", "attrname": "passport_first_name", "controltype": "text", "required": "true", "show": "true", "id": "passportfirstname"},
+            {"label": "LAST_NAME_LABEL", "attrname": "passport_last_name", "controltype": "text", "required": "true", "show": "true", "id": "passportlastname"},
+            {"label": "BIRTHDATE_LABEL", "attrname": "passport_birthdate", "controltype": "date", "required": "true", "show": "true", "id": "passportbirthdate"},
+            {"label": "EXPIRATION_DATE_LABEL", "attrname": "passport_expiration_date", "controltype": "date", "required": "false", "show": "false", "id": "passportexpirationdate"}
+          ]
+        }
+    },
+    "Paysheet":{
+        "DemoApp" : {
+          "title": "PAYSHEET_LABEL",
+          "doctype": "Paysheet",
+          "fields": [
+            {"label": "AMOUNT_LABEL", "attrname": "paysheet_amount", "controltype": "text", "required": "true", "show": "true", "id": "paysheetamount"}
+          ]
+        },
+        "PVIApp" : {
+          "title": "PAYSHEET_LABEL",
+          "doctype": "Paysheet",
+          "fields": [
+            {"label": "AMOUNT_LABEL", "attrname": "paysheet_amount", "controltype": "text", "required": "true", "show": "true", "id": "paysheetamount"}
+          ]
+        }
+    },
+    "IRPF":{
+        "DemoApp" : {
+          "title": "IRPF_LABEL",
+          "doctype": "IRPF",
+          "fields": [
+            {"label": "AMOUNT_LABEL", "attrname": "irpf_amount", "controltype": "text", "required": "true", "show": "true", "id": "irpfamount"}
+          ]
+        },
+        "PVIApp" : {
+          "title": "IRPF_LABEL",
+          "doctype": "IRPF",
+          "fields": [
+            {"label": "AMOUNT_LABEL", "attrname": "irpf_amount", "controltype": "text", "required": "true", "show": "true", "id": "irpfamount"}
+          ]
+        }
+    },
+    "Bank_Receipt":{
+        "DemoApp" : {
+          "title": "BANK_RECEIPT_LABEL",
+          "doctype": "Bank_Receipt",
+          "fields": [
+            {"label": "ACCOUNT_LABEL", "attrname": "bank_receipt_account_number", "controltype": "text", "required": "true", "show": "true", "id": "bankreceiptaccount"}
+          ]
+        },
+        "PVIApp" : {
+          "title": "BANK_RECEIPT_LABEL",
+          "doctype": "Bank_Receipt",
+          "fields": [
+            {"label": "ACCOUNT_LABEL", "attrname": "bank_receipt_account_number", "controltype": "text", "required": "true", "show": "true", "id": "bankreceiptaccount"}
+          ]
+        }
+    },
+    "Receipt":{
+        "DemoApp" : {
+          "title": "RECEIPT_LABEL",
+          "doctype": "Receipt",
+          "fields": []
+        },
+        "PVIApp" : {
+          "title": "RECEIPT_LABEL",
+          "doctype": "Receipt",
+          "fields": []
+        }
+    },
+    "SignatureCard" : {
+        "IdentityApp": {
+          "title": "SIGNATURE_CARD_LABEL",
+          "doctype": "SignatureCard",
+          "fields": []
+        }
+    },
+    "Pattern" : {
+        "FaceRecognitionApp": {
+          "title": "REFERENCE_PATTERN_LABEL",
+          "doctype": "Pattern",
+          "fields": [
+            {"label": "PATTERN_NAME_LABEL", "attrname": "pattern_name", "controltype": "text", "required": "false", "show": "true", "id": "patternname"},
+            {"label": "PATTERN_NUMBER_LABEL", "attrname": "pattern_number", "controltype": "text", "required": "true", "show": "true", "id": "patternnumber"}
+          ]
+        }
+    },
+    "Media" : {
+        "FaceRecognitionApp": {
+          "title": "REFERENCE_PATTERN_LABEL",
+          "doctype": "Media",
+          "fields": []
+        }
+    },
+    "IdentityMedia" : {
+        "FaceRecognitionApp": {
+          "title": "IDENTITY_MEDIA_LABEL",
+          "doctype": "IdentityMedia",
+          "fields": [
+            {"label": "PATTERN_ID", "attrname": "identity_media_pattern_id", "controltype": "text", "required": "true", "show": "false", "id": "identitymediapatternid"}
+          ]
+
+        }
+    }
+  },
+  "validationConfiguration" : {
+    "Dni" : {
+      "DemoApp": {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "PVIApp": {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "IdentityApp": {
+        "status" : "dis",
+        "headers" : ["", "", "HEADER_DOCUMENT_LABEL", "HEADER_SYSTEM_LABEL"],
+        "validations" : {"VALIDATION_EXPIRATION_DATE_LABEL":"dis"},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : ["",""]},
+              "BIRTHDATE_LABEL" : {"value" : "", "checks" : ["",""]}
+        }
+      }
+    },
+    "Dni_front" : {
+      "IdentityApp": {
+        "status" : "dis",
+        "headers" : ["", "", "HEADER_DOCUMENT_LABEL", "HEADER_SYSTEM_LABEL"],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : ["",""]},
+              "BIRTHDATE_LABEL" : {"value" : "", "checks" : ["",""]}
+        }
+      }
+    },
+    "NIE" : {
+      "DemoApp" : {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "IdentityApp": {
+        "status" : "dis",
+        "headers" : ["", "", "HEADER_DOCUMENT_LABEL", "HEADER_SYSTEM_LABEL"],
+        "validations" : {"VALIDATION_EXPIRATION_DATE_LABEL":"dis"},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : ["",""]},
+              "BIRTHDATE_LABEL" : {"value" : "", "checks" : ["",""]}
+        }
+      }
+    },
+    "Nie_front" : {
+      "IdentityApp": {
+        "status" : "dis",
+        "headers" : ["", "", "HEADER_DOCUMENT_LABEL", "HEADER_SYSTEM_LABEL"],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : ["",""]},
+              "BIRTHDATE_LABEL" : {"value" : "", "checks" : ["",""]}
+        }
+      }
+    },
+    "Passport" : {
+      "DemoApp" : {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "headers" : [],
+        "validations" : {},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : []},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : []},
+              "EXPIRATION_DATE_LABEL" : {"value" : "", "checks" : []}
+        }
+      },
+      "IdentityApp": {
+        "status" : "dis",
+        "headers" : ["", "", "HEADER_DOCUMENT_LABEL", "HEADER_SYSTEM_LABEL"],
+        "validations" : {"VALIDATION_EXPIRATION_DATE_LABEL":"dis"},
+        "attribs" : { "FIRST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "LAST_NAME_LABEL" : {"value" : "", "checks" : ["",""]},
+              "IDENTIFICATION_NUMBER_LABEL" : {"value" : "", "checks" : ["",""]},
+              "BIRTHDATE_LABEL" : {"value" : "", "checks" : ["",""]}
+        }
+      }
+    },
+    "Paysheet" : {
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_INCOME_LABEL":"dis",
+                "EQUALS_AMOUNT_LABEL":"dis"},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_INCOME_LABEL":"dis",
+                "EQUALS_AMOUNT_LABEL":"dis"},
+        "attribs" : {}
+      }
+    },
+    "IRPF" : {
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_INCOME_LABEL":"dis",
+                "EQUALS_AMOUNT_LABEL":"dis"},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_INCOME_LABEL":"dis",
+                "EQUALS_AMOUNT_LABEL":"dis"},
+        "attribs" : {}
+      }
+    },
+    "Bank_Receipt" : {
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_RECEIPT_LABEL":"dis",
+                "EQUALS_ACCOUNT_LABEL":"dis"},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_NAME_RECEIPT_LABEL":"dis",
+                "EQUALS_ACCOUNT_LABEL":"dis"},
+        "attribs" : {}
+      }
+    },
+    "Receipt" : {
+      "DemoApp" : {
+        "status": "dis",
+        "validations" : { "EQUALS_IDENTIFICATION_NUMBER_LABEL":"dis",
+                "EQUALS_DATE_LABEL":"dis"},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status": "dis",
+        "validations" : { "EQUALS_IDENTIFICATION_NUMBER_LABEL":"dis",
+                "EQUALS_DATE_LABEL":"dis"},
+        "attribs" : {}
+      }
+    },
+    "SignatureCard" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : { "EQUALS_SENDER_SIGN_LABEL":"dis",
+                  "EQUALS_AGENT_SIGN_LABEL":"dis"},
+        "attribs" : {}
+      }
+    },
+    "Not_Recognized_Identity" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      }
+    },
+    "Not_Recognized_IdentityFront" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      }
+    },
+    "Not_Recognized_Income" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      }
+    },
+    "Not_Recognized_Receipt" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      }
+    },
+    "Not_Recognized_SignatureCard" : {
+      "IdentityApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "DemoApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      },
+      "PVIApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : {}
+      }
+    },
+    "Pattern": {
+      "FaceRecognitionApp": {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : { "PATTERN_NAME_LABEL" : {"value" : "", "checks" : []},
+              "PATTERN_NUMBER_LABEL" : {"value" : "", "checks" : []}}
+      }
+    },
+    "IdentityMedia" : {
+      "FaceRecognitionApp" : {
+        "status" : "dis",
+        "validations" : {},
+        "attribs" : { "PERCENTAGE_OF_COINCIDENCE_LABEL" : {"value" : "", "checks" : []}}
+      }
+    }
+  }
+
+}

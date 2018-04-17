@@ -1,0 +1,17 @@
+<div ng-if='show' class='wrapper overlay vertical-align'>
+  <div class='col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3'>
+    <div class="panel" ng-class="{'panel-info':(modaltype===0), 'panel-warning':(modaltype===1), 'panel-danger':(modaltype===2)}">
+      <div class="panel-heading">
+        <a class="glyphicon spacedglyphicon" ng-class="{'glyphicon-info-sign':(modaltype===0), 'glyphicon-warning-sign':(modaltype===1), 'glyphicon-exclamation-sign':(modaltype===2)}"></a>
+        <a>{{title | translate}}</a>
+      </div>
+      <div class="modal-body pre-scrollable" style="max-height:80%; max-height:80vh;">
+        <p>{{msg | translate}}</p>
+      </div>
+      <div class="modal-footer">
+        <button id="modal_ok" class="btn btn-primary" ng-click='save()'><a class="glyphicon spacedglyphicon glyphicon-ok" style="color:white"></a> {{'ACCEPT_BUTTON_LABEL' | translate}}</button>
+        <button id="modal_cancel" ng-if='cancelable' class="btn btn-primary" ng-click='cancel()'><a class="glyphicon spacedglyphicon glyphicon-remove" style="color:white"></a> {{'CANCEL_BUTTON_LABEL' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

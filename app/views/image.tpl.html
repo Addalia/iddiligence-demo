@@ -1,0 +1,9 @@
+  <div ng-attr-id="{{ 'ipsa-image-' + title }}" >
+    <form name="ipsaImageForm" >
+        <div ngf-drop ngf-select ng-model="picFile" ngf-pattern="pattern" ngf-accept="pattern" ngf-drag-over-class="dragOverClass"
+            ngf-select-disabled="disable" class="drop-box">
+            <img ng-show="uploadImgVisible" ngf-src="picFile" ng-attr-id="{{ 'ipsa-img-' + title }}" class="thumb"/>
+			<img ng-show="ipsaImageForm.$valid === false && downloadImgVisible === true" src="{{img}}" ng-attr-id="{{ 'ipsa-img-download-' + title }}" class="thumb" />
+        </div>
+    </form>
+  </div>

@@ -1,0 +1,36 @@
+<div class="container row row-centered center-block">
+  <form name="login" class="panel form-group col-sm-4 col-sm-offset-4" role="form" ng-submit="userlogin.login()">
+    <fieldset>
+	    <legend>{{'LOGIN_TITLE' | translate}}</legend>
+		<div class="form-group">
+		    <label for="inputname" class="sr-only col-sm-3">Name</label>
+		    <div class="">
+		    	<input type="text" id="inputname" class="form-control " placeholder="{{'USER_LABEL' | translate}}" ng-model="userlogin.user.user" required autofocus>
+			</div>
+		</div>
+		<div class="form-group">
+		    <label for="inputPassword" class="sr-only col-sm-3">Password</label>
+		    <div class="">
+		    	<input type="password" id="inputPassword" class="form-control" placeholder="{{'PASSWORD_LABEL' | translate}}" ng-model="userlogin.user.pass" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<legend >{{'SELECT_PRODUCT' | translate}}</legend>
+			<label for="productSelect" class="sr-only col-sm-3">product</label>
+			<select  class="form-control"  id="productSelect"  ng-model="userlogin.selected" ng-change="userlogin.updateSelectedProduct()" ng-options="idx as product.name | translate for (idx,product) in userlogin.products"></select>
+		</div>
+		<div class="form-group">
+		    <div class="">
+		    	<button class="btn btn-lg btn-primary btn-block" id="login_btn_submit" type="submit" ng-disabled="!login.$valid">{{'LOGIN_LABEL' | translate}}</button>
+			</div>
+		</div>
+		<div class="form-group">
+		    <div class="alert alert-danger" role="alert" ng-hide="userlogin.error===''">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				<span class="sr-only">Error:</span>
+				{{userlogin.error}}
+			</div>
+		</div>
+	</fieldset>
+  </form>
+</div>

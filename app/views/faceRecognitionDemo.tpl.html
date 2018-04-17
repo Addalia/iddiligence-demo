@@ -1,0 +1,93 @@
+<div class="">
+    <ipsa-modal
+        show='faceRecognitionDemoCtrl.modal'
+        savechanges="faceRecognitionDemoCtrl.modalOk()"
+        template-user="views/modal.tpl.html"
+        msg="{{faceRecognitionDemoCtrl.error}}"
+        title="WARNING_TITLE"
+        type='W'
+        cancelable='false'>
+    </ipsa-modal>
+<div>
+
+<div class="">
+    <div class="col-sm-8" >
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default panel-custom col-sm-12">
+                <ipsa-doc-entry
+                    title = "REFERENCE_PATTERN_DOCUMENT"
+                    model = "faceRecognitionDemoCtrl.referencePatternConfiguration"
+                    disable = "faceRecognitionDemoCtrl.disableReferencePatternDocEntry"
+                    selected = "faceRecognitionDemoCtrl.selectedReferencePattern"
+                    itemclick = "faceRecognitionDemoCtrl.onReferencePatternClick(document)"
+                    onupload = "faceRecognitionDemoCtrl.uploadReferencePatternImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetReferencePatternImage()"
+                    disableimage = "faceRecognitionDemoCtrl.disableReferencePatternImage"
+                    disabledropdown = "false"
+                    image = "faceRecognitionDemoCtrl.image.ReferencePattern"
+                    clearimage = "faceRecognitionDemoCtrl.clearReferencePatternImage"
+                    inputstyle = "compact"
+                    clear = "faceRecognitionDemoCtrl.clearReferencePatternDocEntry"
+                    cssimage = "referencePattern-img"
+                    pattern = "video/*">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default panel-custom col-sm-12">
+                <ipsa-doc-entry
+                    title = "IDENTITY_MEDIA_DOCUMENT"
+                    model = "faceRecognitionDemoCtrl.identityMediaConfiguration"
+                    disable = "faceRecognitionDemoCtrl.disableIdentityMediaDocEntry"
+                    selected = "faceRecognitionDemoCtrl.selectedIdentityMedia"
+                    itemclick = "faceRecognitionDemoCtrl.onIdentityMediaClick(document)"
+                    onupload = "faceRecognitionDemoCtrl.uploadIdentityMediaImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetIdentityMediaImage()"
+                    disableimage = "faceRecognitionDemoCtrl.disableIdentityMediaImage"
+                    disabledropdown = "false"
+                    image = "faceRecognitionDemoCtrl.image.IdentityMedia"
+                    clearimage = "faceRecognitionDemoCtrl.clearIdentityMediaImage"
+                    inputstyle = "compact"
+                    clear = "faceRecognitionDemoCtrl.clearIdentityMediaDocEntry"
+                    cssimage = "identityMedia-img"
+                    pattern = "image/*">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4" >
+        <div class="row form-group">
+            <button style="margin-right: 1em;" type="button" id="terminate_btn" class="btn btn-success pull-right" ng-click="faceRecognitionDemoCtrl.terminate();"  ng-disabled="faceRecognitionDemoCtrl.isTerminateButtonDisabled()">
+                    <div class="glyphicon glyphicon-cloud-upload"></div> {{'FINISH_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="cancel_btn" class="btn btn-danger pull-right" ng-click="faceRecognitionDemoCtrl.cancel();" ng-disabled="faceRecognitionDemoCtrl.isCancelButtonDisabled()"><div class="glyphicon glyphicon-trash">
+                    </div> {{'CANCEL_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="newOp_btn" class="btn btn-primary pull-right" ng-click="faceRecognitionDemoCtrl.newOperation();"><div class="glyphicon glyphicon-file">
+                    </div> {{'NEW_LABEL' | translate}}
+            </button>
+        </div>
+
+        <div class="row">
+            <div idoc-validation
+                title="REFERENCE_PATTERN_DOCUMENT"
+                titletype="faceRecognitionDemoCtrl.validationReferencePattern.title"
+                status="faceRecognitionDemoCtrl.referencePatternValidation[faceRecognitionDemoCtrl.selectedReferencePattern.doctype].status"
+                ocr="faceRecognitionDemoCtrl.ocr.ReferencePattern"
+                docattribs="faceRecognitionDemoCtrl.referencePatternValidation[faceRecognitionDemoCtrl.selectedReferencePattern.doctype].attribs"
+                validations="faceRecognitionDemoCtrl.referencePatternValidation[faceRecognitionDemoCtrl.selectedReferencePattern.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="IDENTITY_MEDIA_DOCUMENT"
+                titletype="faceRecognitionDemoCtrl.validationIdentityMedia.title"
+                status="faceRecognitionDemoCtrl.identityMediaValidation[faceRecognitionDemoCtrl.selectedIdentityMedia.doctype].status"
+                ocr="faceRecognitionDemoCtrl.ocr.IdentityMedia"
+                docattribs="faceRecognitionDemoCtrl.identityMediaValidation[faceRecognitionDemoCtrl.selectedIdentityMedia.doctype].attribs"
+                validations="faceRecognitionDemoCtrl.identityMediaValidation[faceRecognitionDemoCtrl.selectedIdentityMedia.doctype].validations">
+            </div>
+        </div>
+    </div>
+</div>

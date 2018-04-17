@@ -1,0 +1,113 @@
+<div class="">
+    <ipsa-modal
+        show='identityDemoCtrl.modal'
+        savechanges="identityDemoCtrl.modalOk()"
+        template-user="views/modal.tpl.html"
+        msg="{{identityDemoCtrl.error}}"
+        title="WARNING_TITLE"
+        type='W'
+        cancelable='false'>
+    </ipsa-modal>
+<div>
+
+<div class="">
+    <div class="col-sm-8" >
+        <div class="col-md-6 col-sm-12">
+
+            <div class="panel panel-default panel-custom col-sm-12">
+                <ipsa-doc-entry
+                    title = "BACK_LABEL"
+                    model = "identityDemoCtrl.identityConfiguration"
+                    disable = "identityDemoCtrl.disableIdentityDocEntry"
+                    selected = "identityDemoCtrl.selectedIdentity"
+                    itemclick = "identityDemoCtrl.onIdentityClick(document)"
+                    onupload = "identityDemoCtrl.uploadIdentityImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetIdentityImage()"
+                    disableimage = "identityDemoCtrl.disableIdentityImage"
+                    disabledropdown = "false"
+                    image = "identityDemoCtrl.image.Identity"
+                    clearimage = "identityDemoCtrl.clearIdentityImage"
+                    inputstyle = "compact"
+                    clear = "identityDemoCtrl.clearIdentityDocEntry"
+                    cssimage ="identity-img">
+                </ipsa-doc-entry>
+            </div>
+
+            <div class="panel panel-default panel-custom col-sm-12">
+                <ipsa-doc-entry
+                    title = "FRONT_LABEL"
+                    model = "identityDemoCtrl.identityFrontConfiguration"
+                    disable = "identityDemoCtrl.disableIdentityFrontDocEntry"
+                    selected = "identityDemoCtrl.selectedIdentityFront"
+                    itemclick = "identityDemoCtrl.onIdentityFrontClick(document)"
+                    onupload = "identityDemoCtrl.uploadIdentityFrontImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetIdentityFrontImage()"
+                    disableimage = "identityDemoCtrl.disableIdentityFrontImage"
+                    disabledropdown = "true"
+                    image = "identityDemoCtrl.image.IdentityFront"
+                    clearimage = "identityDemoCtrl.clearIdentityFrontImage"
+                    inputstyle = "compact"
+                    clear = "identityDemoCtrl.clearIdentityFrontDocEntry"
+                    cssimage ="identity-front-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-default panel-custom col-sm-12">
+                <ipsa-doc-entry
+                    title = "SIGNATURE_CARD_LABEL"
+                    model = "identityDemoCtrl.signatureCardConfiguration"
+                    disable = "identityDemoCtrl.disableSignatureCardDocEntry"
+                    selected = "identityDemoCtrl.selectedSignatureCard"
+                    itemclick = "identityDemoCtrl.onSignatureCardClick(document)"
+                    onupload = "identityDemoCtrl.uploadSignatureCardImage($dataURI)"
+                    onimagereset = "validationDemoCtrl.onResetSignatureCardFrontImage()"
+                    disableimage = "identityDemoCtrl.isSignatureCardImageDisabled()"
+                    disabledropdown = "false"
+                    image = "identityDemoCtrl.image.SignatureCard"
+                    clearimage = "identityDemoCtrl.clearSignatureCardImage"
+                    inputstyle = "compact"
+                    clear = "identityDemoCtrl.clearSignatureCardDocEntry"
+                    cssimage ="signature-img">
+                </ipsa-doc-entry>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4" >
+        <div class="row form-group">
+            <button style="margin-right: 1em;" type="button" id="terminate_btn" class="btn btn-success pull-right" ng-click="identityDemoCtrl.terminate();"  ng-disabled="identityDemoCtrl.isTerminateButtonDisabled()">
+                    <div class="glyphicon glyphicon-cloud-upload"></div> {{'FINISH_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="cancel_btn" class="btn btn-danger pull-right" ng-click="identityDemoCtrl.cancel();" ng-disabled="identityDemoCtrl.isCancelButtonDisabled()"><div class="glyphicon glyphicon-trash">
+                    </div> {{'CANCEL_LABEL' | translate}}
+            </button>
+            <button style="margin-right: 1em;" type="button" id="newOp_btn" class="btn btn-primary pull-right" ng-click="identityDemoCtrl.newOperation();"><div class="glyphicon glyphicon-file">
+                    </div> {{'NEW_LABEL' | translate}}
+            </button>
+        </div>
+
+        <div class="row">
+            <div idoc-validation
+                title="IDENTITY_DOCUMENT"
+                titletype="identityDemoCtrl.validationIdentity.title"
+                status="identityDemoCtrl.identityValidation[identityDemoCtrl.selectedIdentity.doctype].status"
+                ocr="identityDemoCtrl.ocr.Identity"
+                headers="identityDemoCtrl.identityValidation[identityDemoCtrl.selectedIdentity.doctype].headers"
+                docattribs="identityDemoCtrl.identityValidation[identityDemoCtrl.selectedIdentity.doctype].attribs"
+                validations="identityDemoCtrl.identityValidation[identityDemoCtrl.selectedIdentity.doctype].validations">
+            </div>
+
+            <div idoc-validation
+                title="SIGNATURE_CARD"
+                titletype="identityDemoCtrl.validationSignatureCard.title"
+                status="identityDemoCtrl.signatureCardValidation[identityDemoCtrl.selectedSignatureCard.doctype].status"
+                ocr="identityDemoCtrl.ocr.SignatureCard"
+                docattribs="identityDemoCtrl.signatureCardValidation[identityDemoCtrl.selectedSignatureCard.doctype].attribs"
+                validations="identityDemoCtrl.signatureCardValidation[identityDemoCtrl.selectedSignatureCard.doctype].validations">
+            </div>
+        </div>
+    </div>
+</div>
